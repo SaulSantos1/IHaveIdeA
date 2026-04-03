@@ -1,0 +1,40 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Question {
+  id             String    @id @default(uuid())
+  question       String
+  reference      String
+  category       String
+  difficulty     String
+  active_date    DateTime? @unique
+  created_at     DateTime? @default(now())
+
+  answers        Answer[]
+
+  @@map("questions")
+  @@index([active_date], name: "idx_questions_active_date")
+}
+
+model Answer {
+  id             String    @id @default(uuid())
+  question_id    String
+  session_hash   String
+  answer_text    String
+  evaluation_status String?
+  feedback       String?
+  submitted_at   DateTime? @default(now())
+
+  question       Question  @relation(fields: [question_id], references: [id])
+
+  @@map("answers")
+  @@unique([session_hash, question_id])
+  @@index([session_hash], name: "idx_answers_session_hash")
+  @@index([question_id], name: "idx_answers_question_id")
+}
