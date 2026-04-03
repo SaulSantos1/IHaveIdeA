@@ -1,6 +1,6 @@
-# I Have Idea
+# I Have IdeA
 
-Bem-vindo ao repositório do projeto **I Have Idea**. Esta aplicação é uma prova de conceito de um jogo de atividade diária técnica com foco em minimalismo e interface escura inspirada no HackerRank e Termo.
+Bem-vindo ao repositório do projeto **I Have IdeA**. Esta aplicação é uma prova de conceito de um jogo de atividade diária técnica com foco em minimalismo e interface escura inspirada no HackerRank e Termo.
 
 ## Requisitos
 - **Node.js** >= 18

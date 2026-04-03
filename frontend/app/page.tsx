@@ -103,7 +103,7 @@ export default function Home() {
 
   const handleShare = () => {
     if (!streakData) return;
-    const text = `🧠 I Have Idea\n🔥 ${streakData.streak} Dias\nStatus Hoje: ${feedback?.status === 'CORRECT' ? '✅' : feedback?.status === 'PARTIAL' ? '⚠️' : '❌'}\nMinha melhor sequência: ${streakData.longestStreak}\nJogue em: meu-dominio.com`;
+    const text = `🧠 I Have IdeA\n🔥 ${streakData.streak} Dias\nStatus Hoje: ${feedback?.status === 'CORRECT' ? '✅' : feedback?.status === 'PARTIAL' ? '⚠️' : '❌'}\nMinha melhor sequência: ${streakData.longestStreak}\nJogue em: meu-dominio.com`;
     navigator.clipboard.writeText(text);
     alert('Progresso copiado para a área de transferência!');
   };
