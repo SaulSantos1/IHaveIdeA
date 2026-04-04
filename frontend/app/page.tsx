@@ -15,6 +15,7 @@ export default function Home() {
   const [timeLeft, setTimeLeft] = useState('');
   const [showIntroModal, setShowIntroModal] = useState(false);
   const [showTermoModal, setShowTermoModal] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     const hasSeenModal = localStorage.getItem('__ihi_saw_modal_v2');
@@ -103,9 +104,10 @@ export default function Home() {
 
   const handleShare = () => {
     if (!streakData) return;
-    const text = `🧠 I Have IdeA\n🔥 ${streakData.streak} Dias\nStatus Hoje: ${feedback?.status === 'CORRECT' ? '✅' : feedback?.status === 'PARTIAL' ? '⚠️' : '❌'}\nMinha melhor sequência: ${streakData.longestStreak}\nJogue em: meu-dominio.com`;
+    const text = `🧠 I Have IdeA\n🔥 ${streakData.streak} Dias\nStatus Hoje: ${feedback?.status === 'CORRECT' ? '✅' : feedback?.status === 'PARTIAL' ? '⚠️' : '❌'}\nMinha melhor sequência: ${streakData.longestStreak}\nJogue em: https://www.ihavedeia.com.br/`;
     navigator.clipboard.writeText(text);
-    alert('Progresso copiado para a área de transferência!');
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   if (loading) return (
@@ -303,8 +305,15 @@ export default function Home() {
                  </div>
                  
                  <div className="flex-1">
-                   <button onClick={handleShare} className="w-full flex items-center justify-center gap-2 py-3 bg-[#1ca45c] text-white uppercase tracking-widest font-bold text-sm rounded transition hover:bg-[#1fa15c]">
-                     Compartilhar <Share2 size={16} />
+                   <button 
+                    onClick={handleShare} 
+                    className="w-full flex items-center justify-center gap-2 py-3 bg-[#1ca45c] text-white uppercase tracking-widest font-bold text-sm rounded transition-all duration-300 hover:bg-[#1fa15c]"
+                   >
+                     {copied ? (
+                       <>Copiado! <CheckCircle2 size={16} /></>
+                     ) : (
+                       <>Compartilhar <Share2 size={16} /></>
+                     )}
                    </button>
                  </div>
               </div>
