@@ -22,7 +22,7 @@ export default function Home() {
       setShowIntroModal(true);
     }
   }, []);
-
+ 
   const closeIntroModal = () => {
     localStorage.setItem('__ihi_saw_modal_v2', 'true');
     setShowIntroModal(false);
